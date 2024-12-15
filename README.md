@@ -1,5 +1,6 @@
 # Stylish Proxy
-A mod to make VA Proxy a little more stylish
+A mod to make VA Proxy a little more stylish<BR>
+Currently allows you to switch and cycle between all 4 weapons.
 # IMPORTANT
 Config File is in <gamedir>/BepinEx/config, defaults are recommened as entering an unacceptable value will not work <BR><BR>
 CONTROLLER PLAYERS CAN ONLY CYCLE THROUGH ALL WEAPONS IN ONE DIRECTION FOR NOW, USING R1/RB  (Due to lack of bindable buttons, could not figure out a way to get DPAD input) <BR><BR>
