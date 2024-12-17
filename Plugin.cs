@@ -11,7 +11,7 @@ namespace StylishProxy
     {
         internal const string GUID = "hol.vaproxy.stylishproxy";
         internal const string Name = "StylishProxy";
-        internal const string Version = "1.0.0";
+        internal const string Version = "1.0.1";
     }
 
     [BepInPlugin(PluginInfo.GUID, PluginInfo.Name, PluginInfo.Version)]
@@ -23,6 +23,8 @@ namespace StylishProxy
         private ConfigEntry<KeyCode> Weapon2Bind;
         private ConfigEntry<KeyCode> Weapon3Bind;
         private ConfigEntry<KeyCode> Weapon4Bind;
+        private ConfigEntry<KeyCode> CycleSwords;
+        private ConfigEntry<KeyCode> CycleLongarms;
 
         internal static new ManualLogSource Logger;
 
@@ -44,6 +46,8 @@ namespace StylishProxy
             Weapon2Bind = cfg.Bind("Keybinds", "Loyalty Bind", KeyCode.Alpha2, "Keyboard bind to switch to Loyalty");
             Weapon3Bind = cfg.Bind("Keybinds", "Judgement Bind", KeyCode.Alpha3, "Keyboard bind to switch to Judgement");
             Weapon4Bind = cfg.Bind("Keybinds", "Usurper Bind", KeyCode.Alpha4, "Keyboard bind to switch to Usurper");
+            CycleSwords = cfg.Bind("Keybinds", "Cycle Swords", KeyCode.None, "Keyboard bind to cycle between Duty and Judgement");
+            CycleLongarms = cfg.Bind("Keybinds", "Cycle Longarms", KeyCode.None, "Keyboard bind to cycle between Loyalty and Usurper");
         }
 
         public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -109,6 +113,29 @@ namespace StylishProxy
                             curWeapon = 9;
                         }
                         Logger.LogDebug("Cycling forward to" + curWeapon);
+                    }
+                    else if (Input.GetKeyDown(CycleSwords.Value))
+                    {
+                        if (curWeapon == 9)
+                        {
+                            curWeapon = 11;
+                        }
+                        else
+                        {
+                            curWeapon = 9;
+                        }
+                    }
+
+                    else if (Input.GetKeyDown(CycleLongarms.Value))
+                    {
+                        if (curWeapon == 10)
+                        {
+                            curWeapon = 12;
+                        }
+                        else
+                        {
+                            curWeapon = 10;
+                        }
                     }
                     data.SetWeapon1(curWeapon);
                     data.SetWeapon2(curWeapon);
